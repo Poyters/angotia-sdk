@@ -5,3 +5,12 @@ export interface NewCharacter {
   gender: Gender;
   sprite?: string;
 }
+export interface Character {
+  id: string;
+  created: number;
+  timeSpent: number;
+  gender: Gender;
+  nick: string;
+  sprite: string;
+  level: number;
+}

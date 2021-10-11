@@ -43,5 +43,25 @@ export const logsConfig = {
   FORCE_FETCHING_ANGOTIA_USER_ERROR: {
     message: "Force fetching Angotia user end with failure",
     level: Log.fatal
+  },
+  FETCH_USER_CHARACTERS: {
+    message: "Fetching user characters..."
+  },
+  FETCHED_USER_CHARACTERS: {
+    message: "Fetched user characters"
+  },
+  FETCH_USER_CHARACTERS_ERR: {
+    message: "An error occured during fetching user characters",
+    level: Log.error
+  },
+  FETCH_CHARACTER_BY_NICK: {
+    message: "Fetching character by nick..."
+  },
+  FETCHED_CHARACTER_BY_NICK: {
+    message: "Fetched character by nick"
+  },
+  FETCH_CHARACTER_BY_NICK_ERR: {
+    message: "An error occured during fetching character by nick",
+    level: Log.error
   }
 };
