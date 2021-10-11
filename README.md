@@ -1,6 +1,6 @@
 # angotia-sdk
 
-Angotia SDK is a TypeScript library that provides a common (around Angotia game ecosystem) entities like: *utils, interfaces, models etc*.
+Angotia SDK is a TypeScript library that provides a common (around Angotia game ecosystem) entities like: _utils, interfaces, models etc_.
 
 ## Commands
 
@@ -35,4 +35,13 @@ $ SDK_LOGGER=ENABLED
 
 # Next.js projects
 $ NEXT_PUBLIC_SDK_LOGGER=ENABLED
+
+# React.js projects
+$ REACT_APP_SDK_LOGGER=ENABLED
+```
+
+## Attach SDK to another project
+
+```bash
+$ yalc add angotia-sdk
 ```

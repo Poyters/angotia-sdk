@@ -24,24 +24,6 @@ module.exports = {
   },
   rules: {
     "@typescript-eslint/no-var-requires": 0,
-    "@typescript-eslint/explicit-module-boundary-types": 0,
-    "no-unused-vars": [
-      1,
-      {
-        vars: "all",
-        args: "after-used",
-        argsIgnorePattern: "^_",
-        varsIgnorePattern: "^_"
-      }
-    ],
-    "@typescript-eslint/no-unused-vars": [
-      1,
-      {
-        vars: "all",
-        args: "after-used",
-        argsIgnorePattern: "^_",
-        varsIgnorePattern: "^_"
-      }
-    ]
+    "@typescript-eslint/explicit-module-boundary-types": 0
   }
 };
