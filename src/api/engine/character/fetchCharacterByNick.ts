@@ -2,6 +2,7 @@ import { Character } from "../../../interfaces/character.interface";
 import { logger } from "../../../config/logger";
 import { Result, Error } from "../../../types/result.type";
 import axios from "axios";
+import { engineApiUrl } from "../config";
 
 /**
  * Fetch character by unique nick
@@ -18,30 +19,23 @@ import axios from "axios";
 export const fetchCharacterByNick = async (
   nick: string
 ): Promise<Result<Character>> => {
-  logger.write("FETCH_CHARACTER_BY_NICK");
+  logger.write("FETCH_CHARACTER_BY_NICK", { nick });
 
   try {
-    const response = await axios(
-      `${process.env.NEXT_PUBLIC_ENGINE_URL}/character/nick`,
-      {
-        method: "GET",
-        params: {
-          nick: nick
-        }
-      }
-    );
+    const response = await axios(`${engineApiUrl}/character/nick/${nick}`, {
+      method: "GET"
+    });
 
     const responseData = response.data;
 
-    logger.write("FETCHED_CHARACTER_BY_NICK", { responseData });
-
-    if (response.statusText !== "OK") {
-      return [responseData as Error, null];
-    }
+    logger.write("FETCHED_CHARACTER_BY_NICK", { nick, responseData });
 
     return [null, responseData as Character];
   } catch (error) {
-    logger.write("FETCH_CHARACTER_BY_NICK_ERR", { error });
-    throw new Error(error);
+    logger.write("FETCH_CHARACTER_BY_NICK_ERR", {
+      nick,
+      error: error?.response?.data?.statusCode
+    });
+    return [error.response.data as Error, null];
   }
 };

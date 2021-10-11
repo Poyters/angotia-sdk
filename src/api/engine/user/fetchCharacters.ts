@@ -1,6 +1,7 @@
 import { Character } from "../../../interfaces/character.interface";
 import { logger } from "../../../config/logger";
 import { Result, Error } from "../../../types/result.type";
+import { engineApiUrl } from "../config";
 import axios from "axios";
 
 /**
@@ -21,27 +22,22 @@ export const fetchCharacters = async (
   logger.write("FETCH_USER_CHARACTERS");
 
   try {
-    const response = await axios(
-      `${process.env.NEXT_PUBLIC_ENGINE_URL}/user/characters`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+    const response = await axios(`${engineApiUrl}/user/characters`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`
       }
-    );
+    });
 
     const responseData = response.data;
 
     logger.write("FETCHED_USER_CHARACTERS", { responseData });
 
-    if (response.statusText !== "OK") {
-      return [responseData as Error, null];
-    }
-
     return [null, responseData as Character[]];
   } catch (error) {
-    logger.write("FETCH_USER_CHARACTERS_ERR", { error });
-    throw new Error(error);
+    logger.write("FETCH_USER_CHARACTERS_ERR", {
+      error: error?.response?.data?.statusCode
+    });
+    return [error.response.data as Error, null];
   }
 };

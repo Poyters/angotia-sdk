@@ -18,5 +18,8 @@ export * from "./interfaces/character.interface";
 
 // Angotia Engine API
 export * from "./api/engine/user/createUser";
+export * from "./api/engine/user/fetchCharacters";
 export * from "./api/engine/user/fetchUser";
 export * from "./api/engine/user/fetchUserForce";
+
+export * from "./api/engine/character/fetchCharacterByNick";
