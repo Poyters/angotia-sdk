@@ -25,6 +25,19 @@ $ npm run lint
 
 ```
 
+## Support
+
+Library supports below technology stacks:
+
+1. Next.js + Typescript _(Node)_
+2. Nest.js + Fastify _(Node)_
+3. React.js 17.x + Babel 7.x _(Web)_
+
+### Data fetching
+
+Angotia SDK provides some functions for fetching resources over Internet. To provide support
+for web and Node applications, SDK uses _axios_ library internally.
+
 ## Turn on internal library logger
 
 To enable library logger, add below variable to `.env` file inside your project:

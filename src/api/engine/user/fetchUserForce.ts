@@ -4,7 +4,18 @@ import { User } from "../../../interfaces/user.interface";
 import { logger } from "../../../config/logger";
 import { Result } from "../../../types/result.type";
 
-// Fetch user data. After failure trying to create user based on the same token
+/**
+ * Fetch user data. After failure trying to create user based on the same token
+ *
+ * ### Example
+ * ```js
+ * fetchUserForce("token")
+ * // => [null, User]
+ * ```
+ *
+ * @param token - Token provided by SSO
+ * @returns Tuple of [Error, User]
+ */
 export const fetchUserForce = async (token: string): Promise<Result<User>> => {
   try {
     logger.write("FORCE_FETCHING_ANGOTIA_USER");
