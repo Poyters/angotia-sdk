@@ -3,6 +3,7 @@ import { logger } from "../../../config/logger";
 import { Result, Error } from "../../../types/result.type";
 import { engineApiUrl } from "../config";
 import axios from "axios";
+import { undefinedError } from "../../../config/error";
 
 /**
  * Fetch all characters assigned to passed user (token)
@@ -35,9 +36,12 @@ export const fetchCharacters = async (
 
     return [null, responseData as Character[]];
   } catch (error) {
+    const errorData = (error?.response?.data as Error) || undefinedError;
+
     logger.write("FETCH_USER_CHARACTERS_ERR", {
-      error: error?.response?.data?.statusCode
+      error: errorData?.statusCode
     });
-    return [error.response.data as Error, null];
+
+    return [errorData, null];
   }
 };

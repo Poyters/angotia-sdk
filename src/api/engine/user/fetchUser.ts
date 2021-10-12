@@ -3,6 +3,7 @@ import { logger } from "../../../config/logger";
 import { Result, Error } from "../../../types/result.type";
 import { engineApiUrl } from "../config";
 import axios from "axios";
+import { undefinedError } from "../../../config/error";
 
 /**
  * Creates Angotia user (API) based on token. There is possibility to create
@@ -35,9 +36,12 @@ export const fetchUser = async (token: string): Promise<Result<User>> => {
 
     return [null, responseData as User];
   } catch (error) {
+    const errorData = (error?.response?.data as Error) || undefinedError;
+
     logger.write("FETCH_ANGOTIA_USER_ERROR", {
-      error: error?.response?.data?.statusCode
+      error: errorData?.statusCode
     });
-    return [error.response.data as Error, null];
+
+    return [errorData, null];
   }
 };

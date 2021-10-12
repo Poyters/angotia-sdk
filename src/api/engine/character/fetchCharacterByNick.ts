@@ -3,6 +3,7 @@ import { logger } from "../../../config/logger";
 import { Result, Error } from "../../../types/result.type";
 import axios from "axios";
 import { engineApiUrl } from "../config";
+import { undefinedError } from "../../../config/error";
 
 /**
  * Fetch character by unique nick
@@ -32,10 +33,13 @@ export const fetchCharacterByNick = async (
 
     return [null, responseData as Character];
   } catch (error) {
+    const errorData = (error?.response?.data as Error) || undefinedError;
+
     logger.write("FETCH_CHARACTER_BY_NICK_ERR", {
       nick,
-      error: error?.response?.data?.statusCode
+      error: errorData?.statusCode
     });
-    return [error.response.data as Error, null];
+
+    return [errorData, null];
   }
 };
