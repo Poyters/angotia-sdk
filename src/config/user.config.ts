@@ -2,11 +2,16 @@ import { Gender } from "../models/gender.model";
 
 export const userConfig = {
   characters: {
-    maxLevel: 99,
-    max: 4,
+    level: {
+      min: 1,
+      max: 99
+    },
+    quantity: {
+      max: 4
+    },
     sprite: {
       default: {
-        [Gender.female]: "https://i.imgur.com/dypMVUP.png",
+        [Gender.female]: "https://i.imgur.com/MLU2Uyf.png",
         [Gender.male]: "https://i.imgur.com/dypMVUP.png"
       },
       size: {

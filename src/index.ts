@@ -23,3 +23,4 @@ export * from "./api/engine/user/fetchUser";
 export * from "./api/engine/user/fetchUserForce";
 
 export * from "./api/engine/character/fetchCharacterByNick";
+export * from "./api/engine/character/createCharacter";

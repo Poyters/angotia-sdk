@@ -63,5 +63,15 @@ export const logsConfig = {
   FETCH_CHARACTER_BY_NICK_ERR: {
     message: "An error occured during fetching character by nick",
     level: Log.error
+  },
+  CREATE_CHARACTER: {
+    message: "Creating a new character..."
+  },
+  CREATED_CHARACTER: {
+    message: "Created character"
+  },
+  CREATE_CHARACTER_ERR: {
+    message: "An error occured during creating a new character",
+    level: Log.warning
   }
 };
