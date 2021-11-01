@@ -1,6 +1,10 @@
 import { Gender } from "../models/gender.model";
 
 export const userConfig = {
+  nick: {
+    min: 5,
+    max: 20
+  },
   characters: {
     level: {
       min: 1,

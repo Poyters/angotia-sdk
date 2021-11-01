@@ -1,7 +1,7 @@
 import { fetchUser } from "./fetchUser";
 import { createUser } from "./createUser";
 import { User } from "../../../interfaces/user.interface";
-import { logger } from "../../../config/logger";
+import { logger } from "../../../config/internal/logger";
 import { Result } from "../../../types/result.type";
 
 /**

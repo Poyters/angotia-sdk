@@ -1,9 +1,9 @@
 import { Character } from "../../../interfaces/character.interface";
-import { logger } from "../../../config/logger";
+import { logger } from "../../../config/internal/logger";
 import { Result, Error } from "../../../types/result.type";
 import { engineApiUrl } from "../config";
 import axios from "axios";
-import { undefinedError } from "../../../config/error";
+import { undefinedError } from "../../../config/internal/error";
 
 /**
  * Fetch all characters assigned to passed user (token)

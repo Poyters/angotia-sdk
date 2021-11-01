@@ -1,6 +1,6 @@
-import { Logger } from "../utils/logger";
-import { logsConfig } from "../config/logs.config";
-import { Controls } from "../models/controls.model";
+import { Logger } from "../../utils/logger";
+import { logsConfig } from "./logs.config";
+import { Controls } from "../../models/controls.model";
 
 const envSettings =
   process.env.NEXT_PUBLIC_SDK_LOGGER ||

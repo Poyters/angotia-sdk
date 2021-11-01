@@ -1,4 +1,4 @@
-import { Log } from "../models/log.model";
+import { Log } from "../../models/log.model";
 
 export const logsConfig = {
   UNKNOWN_LOG: {

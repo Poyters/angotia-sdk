@@ -1,9 +1,9 @@
 import { User } from "../../../interfaces/user.interface";
-import { logger } from "../../../config/logger";
+import { logger } from "../../../config/internal/logger";
 import { Result, Error } from "../../../types/result.type";
 import { engineApiUrl } from "../config";
 import axios from "axios";
-import { undefinedError } from "../../../config/error";
+import { undefinedError } from "../../../config/internal/error";
 
 /**
  * Creates Angotia user (API) based on token. There is possibility to create

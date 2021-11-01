@@ -1,4 +1,4 @@
-import { Error } from "../types/result.type";
+import { Error } from "../../types/result.type";
 
 export const undefinedError: Error = {
   statusCode: 500,

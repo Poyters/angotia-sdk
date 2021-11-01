@@ -1,9 +1,9 @@
 import { Character } from "../../../interfaces/character.interface";
-import { logger } from "../../../config/logger";
+import { logger } from "../../../config/internal/logger";
 import { Result, Error } from "../../../types/result.type";
 import axios from "axios";
 import { engineApiUrl } from "../config";
-import { undefinedError } from "../../../config/error";
+import { undefinedError } from "../../../config/internal/error";
 
 /**
  * Fetch character by unique nick
