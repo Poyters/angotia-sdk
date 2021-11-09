@@ -1,9 +1,6 @@
 import { User } from "../../../interfaces/user.interface";
-import { logger } from "../../../config/internal/logger";
-import { Result, Error } from "../../../types/result.type";
 import { engineApiUrl } from "../config";
-import axios from "axios";
-import { undefinedError } from "../../../config/internal/error";
+import { requestHandler } from "../../requestHandler";
 
 /**
  * Creates Angotia user (API) based on token. There is possibility to create
@@ -19,29 +16,16 @@ import { undefinedError } from "../../../config/internal/error";
  * @param token - Token provided by SSO
  * @returns Tuple of [Error, User]
  */
-export const createUser = async (token: string): Promise<Result<User>> => {
-  logger.write("CREATING_ANGOTIA_USER");
-
-  try {
-    const response = await axios.get(`${engineApiUrl}/user/create`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-
-    const responseData = response.data;
-
-    logger.write("CREATED_ANGOTIA_USER", { responseData });
-
-    return [null, responseData as User];
-  } catch (error) {
-    const errorData = (error?.response?.data as Error) || undefinedError;
-
-    logger.write("CREATING_ANGOTIA_USER_ERROR", {
-      error: errorData?.statusCode
-    });
-
-    return [errorData, null];
-  }
-};
+export const createUser = (token: string) =>
+  requestHandler<User>(
+    `${engineApiUrl}/users/create`,
+    "POST",
+    {
+      start: "CREATING_ANGOTIA_USER",
+      end: "CREATED_ANGOTIA_USER",
+      err: "CREATING_ANGOTIA_USER_ERROR"
+    },
+    {
+      Authorization: `Bearer ${token}`
+    }
+  );

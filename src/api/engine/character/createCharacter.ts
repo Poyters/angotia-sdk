@@ -1,10 +1,7 @@
 import { Character } from "../../../interfaces/character.interface";
-import { logger } from "../../../config/internal/logger";
-import { Result, Error } from "../../../types/result.type";
-import axios from "axios";
 import { engineApiUrl } from "../config";
-import { undefinedError } from "../../../config/internal/error";
 import { NewCharacter } from "../../../interfaces/character.interface";
+import { requestHandler } from "../../requestHandler";
 
 /**
  * Create character assigned to user who made a request
@@ -18,34 +15,17 @@ import { NewCharacter } from "../../../interfaces/character.interface";
  * @param nick - Character nick
  * @returns Tuple of [Error, Character]
  */
-export const createCharacter = async (
-  token: string,
-  newCharacter: NewCharacter
-): Promise<Result<Character>> => {
-  logger.write("CREATE_CHARACTER", { newCharacter });
-
-  try {
-    const response = await axios(`${engineApiUrl}/character/create`, {
-      method: "POST",
-      data: newCharacter,
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-
-    const responseData = response.data;
-
-    logger.write("CREATED_CHARACTER", { newCharacter, responseData });
-
-    return [null, responseData as Character];
-  } catch (error) {
-    const errorData = (error?.response?.data as Error) || undefinedError;
-
-    logger.write("CREATE_CHARACTER_ERR", {
-      newCharacter,
-      error: errorData?.statusCode
-    });
-
-    return [errorData, null];
-  }
-};
+export const createCharacter = (token: string, newCharacter: NewCharacter) =>
+  requestHandler<Character>(
+    `${engineApiUrl}/character/create`,
+    "POST",
+    {
+      start: "CREATE_CHARACTER",
+      end: "CREATED_CHARACTER",
+      err: "CREATE_CHARACTER_ERR"
+    },
+    {
+      Authorization: `Bearer ${token}`
+    },
+    newCharacter
+  );

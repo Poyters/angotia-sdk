@@ -1,9 +1,6 @@
 import { User } from "../../../interfaces/user.interface";
-import { logger } from "../../../config/internal/logger";
-import { Result, Error } from "../../../types/result.type";
 import { engineApiUrl } from "../config";
-import axios from "axios";
-import { undefinedError } from "../../../config/internal/error";
+import { requestHandler } from "../../requestHandler";
 
 /**
  * Creates Angotia user (API) based on token. There is possibility to create
@@ -19,29 +16,16 @@ import { undefinedError } from "../../../config/internal/error";
  * @param token - Token provided by SSO
  * @returns Tuple of [Error, User]
  */
-export const fetchUser = async (token: string): Promise<Result<User>> => {
-  logger.write("FETCHING_ANGOTIA_USER");
-
-  try {
-    const response = await axios(`${engineApiUrl}/user/profile`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-
-    const responseData = response.data;
-
-    logger.write("FETCHED_ANGOTIA_USER", { responseData });
-
-    return [null, responseData as User];
-  } catch (error) {
-    const errorData = (error?.response?.data as Error) || undefinedError;
-
-    logger.write("FETCH_ANGOTIA_USER_ERROR", {
-      error: errorData?.statusCode
-    });
-
-    return [errorData, null];
-  }
-};
+export const fetchUser = (token: string) =>
+  requestHandler<User>(
+    `${engineApiUrl}/user/profile`,
+    "GET",
+    {
+      start: "FETCHING_ANGOTIA_USER",
+      end: "FETCHED_ANGOTIA_USER",
+      err: "FETCH_ANGOTIA_USER_ERROR"
+    },
+    {
+      Authorization: `Bearer ${token}`
+    }
+  );
