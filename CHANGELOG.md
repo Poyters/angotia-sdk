@@ -6,3 +6,4 @@
 - AG-31, Fix error handling when `Engine API` is turned off
 - AG-32, Extend user config character section
 - AG-33, Create request handler
+- AG-12, Add position to `Character` interface

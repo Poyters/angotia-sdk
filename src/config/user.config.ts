@@ -24,6 +24,13 @@ export const userConfig = {
       },
       frames: 3,
       movementDirectionAnimations: 4
+    },
+    position: {
+      default: {
+        mapId: "98raw12-t412a-4fy1-ayf4-c4c33gr266gb9f2a",
+        x: 10,
+        y: 15
+      }
     }
   }
 };

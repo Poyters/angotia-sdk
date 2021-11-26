@@ -13,4 +13,11 @@ export interface Character {
   nick: string;
   sprite: string;
   level: number;
+  position: Position;
+}
+
+export interface Position {
+  mapId: string;
+  x: number;
+  y: number;
 }
