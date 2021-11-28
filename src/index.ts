@@ -24,3 +24,24 @@ export * from "./api/engine/user/fetchUserForce";
 
 export * from "./api/engine/character/fetchCharacterByNick";
 export * from "./api/engine/character/createCharacter";
+
+// Angotia Resources API
+export * from "./api/resources/mutations/char/createReqChar";
+export * from "./api/resources/mutations/char/updateReqChar";
+
+export * from "./api/resources/mutations/map/createReqMap";
+export * from "./api/resources/mutations/map/updateReqMap";
+
+export * from "./api/resources/queries/char/allChars";
+export * from "./api/resources/queries/char/allCharsBaseInfo";
+export * from "./api/resources/queries/char/allReqChars";
+export * from "./api/resources/queries/char/getChar";
+export * from "./api/resources/queries/char/getReqChar";
+export * from "./api/resources/queries/char/getReqCharsByAuthor";
+
+export * from "./api/resources/queries/map/allMaps";
+export * from "./api/resources/queries/map/allMapsBaseInfo";
+export * from "./api/resources/queries/map/allReqMaps";
+export * from "./api/resources/queries/map/getMap";
+export * from "./api/resources/queries/map/getReqMap";
+export * from "./api/resources/queries/map/getReqMapsByAuthor";

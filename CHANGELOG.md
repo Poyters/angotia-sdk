@@ -7,3 +7,4 @@
 - AG-32, Extend user config character section
 - AG-33, Create request handler
 - AG-12, Add position to `Character` interface
+- AG-38, Add api methods for `Angotia Resources`
