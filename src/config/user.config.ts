@@ -27,9 +27,9 @@ export const userConfig = {
     },
     position: {
       default: {
-        mapId: "98raw12-t412a-4fy1-ayf4-c4c33gr266gb9f2a",
-        x: 10,
-        y: 15
+        mapId: "237",
+        x: 3,
+        y: 5
       }
     }
   }
