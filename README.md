@@ -1,4 +1,4 @@
-# angotia-sdk
+# Angotia SDK
 
 Angotia SDK is a TypeScript library that provides a common (around Angotia game ecosystem) entities like: _utils, interfaces, models etc_.
 
