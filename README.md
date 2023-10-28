@@ -1,6 +1,7 @@
 # Angotia SDK
 
 Angotia SDK is a TypeScript library that provides a common (around Angotia game ecosystem) entities like: _utils, interfaces, models etc_.
+It useses axios to provide HTTP communnication across Node and Web projects. To run it locally, use yalc.
 
 ## Commands
 
